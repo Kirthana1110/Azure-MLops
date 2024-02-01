@@ -1,13 +1,15 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
-code: model
-command: >-
-  python train.py
+code: src/model
+command: |
+  ls ${{inputs.training_data}}
+  echo "--diabetics-csv: ${{inputs.training_data}}/diabetes-dev.csv"
+  python train.py --diabetics-csv ${{inputs.training_data}}/diabetes-dev.csv
 inputs:
   training_data: 
     type: uri_folder 
-    path: azureml:diabetes-dev-folder:1
+    path: azureml://subscriptions/3e6c7e52-0487-496d-865b-bc8bc213eb66/resourcegroups/Azure_MLOps_practice/workspaces/MlOps_Practice_1/datastores/workspaceblobstore/paths/UI/2024-02-01_062132_UTC/
   reg_rate: 0.01
 environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
-compute: MLOPs-Practice
+compute: azureml:MLOPs-Practice
 experiment_name: Run01
 description: Run the job
