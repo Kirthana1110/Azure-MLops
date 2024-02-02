@@ -10,7 +10,9 @@ jobs:
     - name: Check out repo
       uses: actions/checkout@main
     - name: Directory oath 
-      run: cd /home/runner/work/Azure-MLops/Azure-MLops/src
+      run: |
+        cd /home/runner/work/Azure-MLops/src
+        pwd
     - name: Install az ml extension
       run: az extension add -n ml -y
     - name: Azure login
@@ -18,10 +20,5 @@ jobs:
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
     - name: Upload AML job configuration
-      run: |
-        echo '${{ secrets.AZUREML_JOB_CONFIG }}' > job.yml
-        az ml job create -f job.yml --workspace-name aml-pipelinecli-dev --resource-group mlops-pipelinecli-rg
-    - name: Trigger Azure ML Job
-      run: az ml job submit start --name CLI_pipeline_gitlab --config job.yml
-
+      run: az ml job create --file job.yml --workspace-name aml-pipelinecli-dev --resource-group mlops-pipelinecli-rg
 
