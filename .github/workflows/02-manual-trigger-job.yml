@@ -23,11 +23,8 @@ jobs:
       run: bash setup.sh
       working-directory: src
       continue-on-error: true
-    - name: Deploy Azure resources
-      uses: azure/CLI@v1
+    - name: Submit training run
+      id: aml_run
+      uses: Azure/aml-run@v1
       with:
-        azcliversion: latest
-        inlineScript: |
-          az ml job create \
-          --file $GITHUB_WORKSPACE/src/job.yml \
-          --workspace-name aml-pipelinecli-dev
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
