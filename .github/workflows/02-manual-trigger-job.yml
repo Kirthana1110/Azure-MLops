@@ -13,6 +13,10 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
+    - name: Debug directory contents
+      run: |
+        ls -R
+        echo "Working Directory: $PWD"
     - name: setup
       run: bash setup.sh
       working-directory: src
