@@ -28,4 +28,6 @@ jobs:
       with:
         azcliversion: latest
         inlineScript: |
-          az ml job create --file job.yml --workspace-name aml-pipelinecli-dev
+          az ml job create \
+          --file $GITHUB_WORKSPACE/src/job.yml \
+          --workspace-name aml-pipelinecli-dev
