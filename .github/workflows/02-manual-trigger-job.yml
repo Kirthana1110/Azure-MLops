@@ -18,7 +18,7 @@ jobs:
     - name: Upload AML job configuration
       run: |
         echo '${{ secrets.AZUREML_JOB_CONFIG }}' > job.yml
-        az ml job create -f job.yml
+        az ml job create -f job.yml --workspace-name aml-pipelinecli-dev --resource-group mlops-pipelinecli-rg
     - name: Trigger Azure ML Job
       run: az ml job submit start --name CLI_pipeline_gitlab --config job.yml
 
