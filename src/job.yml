@@ -2,17 +2,16 @@ $schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
 type: pipeline
 experiment_name: Run_mlops
 description: Run the job and train the model
-jobs:
-  train:
-    type: command
-    code: src/model
-    command: python train.py --training_data ${{inputs.training_data}} --reg_rate ${{inputs.reg_rate}}
-    inputs:
-      training_data:
-        mode: ro_mount
-        type: uri_folder
-        path: azureml:data-dia:1
-      reg_rate: 0.01
-    environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
-    compute: azureml:cli-job-run
+code: src/model
+command: python train.py --training_data ${{inputs.training_data}} --reg_rate ${{inputs.reg_rate}}
+inputs:
+  training_data:
+    mode: ro_mount
+    type: uri_folder
+    path: azureml:data-dia:1
+  reg_rate: 0.01
+environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+compute: azureml:cli-job-run
+experiment_name: Run_mlops
+description: Run the job and train the model
 
