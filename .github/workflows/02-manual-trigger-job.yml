@@ -9,6 +9,8 @@ jobs:
     steps:
     - name: Check out repo
       uses: actions/checkout@main
+    - name: Directory oath 
+      run: cd /home/runner/work/Azure-MLops/Azure-MLops/src
     - name: Install az ml extension
       run: az extension add -n ml -y
     - name: Azure login
