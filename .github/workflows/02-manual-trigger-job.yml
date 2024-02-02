@@ -18,6 +18,6 @@ jobs:
     - name: attach workspace
       run: az ml folder attach -w aml-pipelinecli-dev -g mlops-pipelinecli-rg
     - name: run pipeline
-      run: az ml run submit-pipeline -n myprojectcli-pipeline -y aml_config/pipeline.yml
+      run: az ml run submit-pipeline -n myprojectcli-pipeline -y ../../src/job.yml
 
 
