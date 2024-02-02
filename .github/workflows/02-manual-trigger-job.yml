@@ -23,6 +23,9 @@ jobs:
       run: bash setup.sh
       working-directory: src
       continue-on-error: true
-    - name: run job
-      run: az ml job create -f job.yml
-      working-directory: src
+    - name: Deploy Azure resources
+      uses: azure/CLI@v1
+      with:
+        azcliversion: latest
+        inlineScript: |
+          az ml job create --file job.yml --workspace-name aml-pipelinecli-dev
