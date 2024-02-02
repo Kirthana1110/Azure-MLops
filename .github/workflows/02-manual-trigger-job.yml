@@ -15,5 +15,14 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
-
-
+    - name: Debug directory contents
+      run: |
+        ls -R
+        echo "Working Directory: $PWD"
+    - name: setup
+      run: bash setup.sh
+      working-directory: src
+      continue-on-error: true
+    - name: run job
+      run: az ml job create -f job.yml
+      working-directory: src
