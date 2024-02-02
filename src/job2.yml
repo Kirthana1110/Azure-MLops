@@ -1,0 +1,5 @@
+$schema: https://azuremlschemas.azureedge.net/latest/asset.schema.json
+name: diab-data
+version: 1
+path: \Users\k.a.sundaramoorthy\Azure-MLops\experimentation\data\diabetes-dev.csv 
+description: Dataset pointing to diab CSV on local computer. Data will be uploaded to default datastore.
