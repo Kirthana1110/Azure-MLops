@@ -19,9 +19,9 @@ jobs:
       continue-on-error: true
     - name: create job
       run: |
-        run_id=$(az ml job create -f job.yml --query name -o tsv)
+        run_id=$(az ml job create -f job.yml --query name -o tsv --debug)
         az ml job stream -n $run_id
-        status=$(az ml job show -n $run_id --query status -o tsv)
+        status=$(az ml job show -n $run_id --query status -o tsv--debug)
         echo $status
         if [[ $status == "Completed" ]]
         then
