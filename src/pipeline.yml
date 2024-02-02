@@ -1,1 +1,5 @@
-
+pipeline:
+  name: TrainingPipeline
+  steps:
+    Step1:
+      runconfig: "./job.yml"
