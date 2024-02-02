@@ -8,6 +8,6 @@ inputs:
     path: azureml:data-dia:1
   reg_rate: 0.01
 environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
-compute: azureml:testdev-vm-cli
+compute: azureml:cli-job-run
 experiment_name: Run_mlops
 description: Run the job and train the model
