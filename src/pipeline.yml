@@ -2,4 +2,4 @@ pipeline:
   name: TrainingPipeline
   steps:
     Step1:
-      runconfig: "./job.yml"
+      runconfig: "/src/model/job.yml"
