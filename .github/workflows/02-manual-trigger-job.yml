@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
-      uses: actions/checkout@main
+      uses: actions/checkout@v2
     - name: Install az ml extension
       run: az extension add -n ml -y
     - name: Azure login
@@ -23,8 +23,16 @@ jobs:
       run: bash setup.sh
       working-directory: src
       continue-on-error: true
+      # Connect the Azure Machine Learning Workspace
+    - name: Connect Azure Machine Learning Workspace
+      id: aml_workspace
+      uses: Azure/aml-workspace@v1
+      with:
+          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    # Submit a training run to the Azure Machine Learning
     - name: Submit training run
       id: aml_run
       uses: Azure/aml-run@v1
       with:
-        creds: ${{secrets.AZURE_CREDENTIALS}}
+          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
