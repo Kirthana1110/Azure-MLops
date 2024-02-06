@@ -27,4 +27,4 @@ jobs:
       id: aml_run
       uses: Azure/aml-run@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: ${{secrets.AZURE_CREDENTIALS}}
