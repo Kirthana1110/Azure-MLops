@@ -1,7 +1,4 @@
-$schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
-type: pipeline
-experiment_name: Run_mlops
-description: Run the job and train the model
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 code: src/model
 command: python train.py --training_data ${{inputs.training_data}} --reg_rate ${{inputs.reg_rate}}
 inputs:
