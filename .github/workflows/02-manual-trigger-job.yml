@@ -32,4 +32,4 @@ jobs:
     # Submit a training run to the Azure Machine Learning
     - name: Submit training run
       run: |
-        az ml job create --file src/job.yml
+        az ml job create --file src/job.yml --debug
