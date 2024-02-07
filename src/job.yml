@@ -1,4 +1,3 @@
-$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 code: src/model
 command: python train.py --training_data ${{inputs.training_data}} --reg_rate ${{inputs.reg_rate}}
 inputs:
@@ -7,7 +6,7 @@ inputs:
     type: uri_folder
     path: azureml:data-dia:1
   reg_rate: 0.01
-environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+environment: azureml:AzureML-sklearn-1.0-ubuntu20.04-py38-cpu@latest
 compute: azureml:cli-job-run
 experiment_name: Run_mlops
 description: Run the job and train the model
